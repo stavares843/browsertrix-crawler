@@ -22,7 +22,6 @@
     "@webrecorder/wabac": "^2.16.12",
     "browsertrix-behaviors": "^0.6.0",
     "crc": "^4.3.2",
-    "dom2html": "git+https://github.com/ikreymer/dom2html#filter-script",
     "get-folder-size": "^4.0.0",
     "husky": "^8.0.3",
     "ioredis": "^5.3.2",
