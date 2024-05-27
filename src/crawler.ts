@@ -4,6 +4,9 @@ import fs, { WriteStream } from "fs";
 import os from "os";
 import fsp from "fs/promises";
 
+// ts-expect-error no types
+//import dom2html from "dom2html";
+
 import {
   RedisCrawlState,
   LoadState,
@@ -56,6 +59,7 @@ import { SitemapReader } from "./util/sitemapper.js";
 import { ScopedSeed } from "./util/seeds.js";
 import { WARCWriter, createWARCInfo, setWARCInfo } from "./util/warcwriter.js";
 import { isHTMLContentType } from "./util/reqresp.js";
+import { snapshotToDom } from "./util/domsnapshot.js";
 
 const behaviors = fs.readFileSync(
   new URL(
@@ -142,6 +146,7 @@ export class Crawler {
 
   screenshotWriter: WARCWriter | null;
   textWriter: WARCWriter | null;
+  domSnapshotWriter: WARCWriter | null;
 
   blockRules: BlockRules | null;
   adBlockRules: AdBlockRules | null;
@@ -268,6 +273,7 @@ export class Crawler {
 
     this.screenshotWriter = null;
     this.textWriter = null;
+    this.domSnapshotWriter = null;
 
     this.blockRules = null;
     this.adBlockRules = null;
@@ -508,6 +514,10 @@ export class Crawler {
     }
     if (this.params.text) {
       this.textWriter = this.createExtraResourceWarcWriter("text");
+    }
+    if (this.params.domSnapshot) {
+      this.domSnapshotWriter =
+        this.createExtraResourceWarcWriter("domsnapshot");
     }
   }
 
@@ -850,6 +860,36 @@ self.__bx_behaviors.selectMainBehavior();
       if (this.params.screenshot.includes("thumbnail")) {
         await screenshots.takeThumbnail();
       }
+    }
+
+    if (this.params.domSnapshot && this.domSnapshotWriter) {
+      //const { data } = await cdp.send("Page.captureSnapshot", {});
+      // const { root } = await cdp.send("DOM.getDocument", {
+      //   depth: -1,
+      //   pierce: true,
+      // });
+
+      const result = await cdp.send("DOMSnapshot.captureSnapshot", {
+        computedStyles: [],
+      });
+
+      fs.createWriteStream(this.collDir + "/dom.json").write(
+        JSON.stringify(result),
+      );
+
+      //const data = dom2html(root, true, "console");
+      const data = snapshotToDom(result);
+
+      this.domSnapshotWriter.writeNewResourceRecord(
+        {
+          buffer: new TextEncoder().encode(data),
+          resourceType: "",
+          contentType: "text/html",
+          url,
+        },
+        logDetails,
+        "general",
+      );
     }
 
     let textextract = null;

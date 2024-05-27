@@ -368,6 +368,12 @@ class ArgParser {
         default: false,
       },
 
+      domSnapshot: {
+        describe: "If set, will generate DOM snapshots of HTML after page load",
+        type: "boolean",
+        default: false,
+      },
+
       warcInfo: {
         alias: ["warcinfo"],
         describe:
