@@ -25,6 +25,7 @@ export type WorkerOpts = {
         request: DirectFetchRequest,
       ) => Promise<{ fetched: boolean; mime: string; ts: Date }>)
     | null;
+  addDOMSnapshot: (cdp: CDPSession) => void;
   frameIdToExecId: Map<string, number>;
 };
 
@@ -181,6 +182,8 @@ export class PageWorker {
           workerid,
           callbacks: this.callbacks,
           directFetchCapture,
+          addDOMSnapshot: (cdp: CDPSession) =>
+            this.recorder?.addDOMSnapshot(cdp),
           frameIdToExecId: new Map<string, number>(),
         };
 

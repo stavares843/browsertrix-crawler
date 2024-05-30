@@ -22,6 +22,7 @@ import { WARCWriter } from "./warcwriter.js";
 import { RedisCrawlState, WorkerId } from "./state.js";
 import { CDPSession, Protocol } from "puppeteer-core";
 import { Crawler } from "../crawler.js";
+import { snapshotToDom } from "./domsnapshot.js";
 
 const MAX_BROWSER_DEFAULT_FETCH_SIZE = 5_000_000;
 const MAX_TEXT_REWRITE_SIZE = 25_000_000;
@@ -119,6 +120,8 @@ export class Recorder {
   skipping = false;
 
   allowFull206 = false;
+
+  useDomSnapshot = false;
 
   tempdir: string;
 
@@ -748,6 +751,30 @@ export class Recorder {
     }
   }
 
+  async addDOMSnapshot(cdp: CDPSession): Promise<void> {
+    const url = this.pageInfo.url;
+
+    const snapshot = await cdp.send("DOMSnapshot.captureSnapshot", {
+      computedStyles: [],
+    });
+
+    const dom = snapshotToDom(snapshot);
+
+    this.writer.writeNewResourceRecord(
+      {
+        buffer: new TextEncoder().encode(dom),
+        resourceType: "",
+        contentType: "text/html",
+        url,
+        date: this.pageInfo.ts,
+      },
+      this.logDetails,
+      "recorder",
+    );
+
+    await this.crawlState.addIfNoDupe(WRITE_DUPE_KEY, url);
+  }
+
   writePageInfoRecord() {
     const text = JSON.stringify(this.pageInfo, null, 2);
 
@@ -1034,11 +1061,15 @@ export class Recorder {
   }
 
   async serializeToWARC(reqresp: RequestResponseInfo) {
+    const { url, method, status, payload, requestId } = reqresp;
+
+    if (this.useDomSnapshot && url === this.pageInfo.url) {
+      return;
+    }
+
     // always include in pageinfo record if going to serialize to WARC
     // even if serialization does not happen
     this.addPageRecord(reqresp);
-
-    const { url, method, status, payload, requestId } = reqresp;
 
     // Specifically log skipping cached resources
     if (reqresp.isCached()) {
