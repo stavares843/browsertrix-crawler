@@ -1024,12 +1024,12 @@
     tslib "^2.6.2"
     tsyringe "^4.8.0"
 
-"@puppeteer/browsers@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-2.4.0.tgz#a0dd0f4e381e53f509109ae83b891db5972750f5"
-  integrity sha512-x8J1csfIygOwf6D6qUAZ0ASk3z63zPb7wkNeHRerCMh82qWKUrOgkuP005AJC8lDL6/evtXETGEJVcwykKT4/g==
+"@puppeteer/browsers@2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@puppeteer/browsers/-/browsers-2.4.1.tgz#7afd271199cc920ece2ff25109278be0a3e8a225"
+  integrity sha512-0kdAbmic3J09I6dT8e9vE2JOCSt13wHCW5x/ly8TSt2bDtuIWe2TgLZZDHdcziw9AVCzflMAXCrVyRIhIs44Ng==
   dependencies:
-    debug "^4.3.6"
+    debug "^4.3.7"
     extract-zip "^2.0.1"
     progress "^2.0.3"
     proxy-agent "^6.4.0"
@@ -1313,15 +1313,15 @@
   integrity sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==
 
 "@webrecorder/wabac@^2.20.0":
-  version "2.20.3"
-  resolved "https://registry.yarnpkg.com/@webrecorder/wabac/-/wabac-2.20.3.tgz#4e3faa476477b64ba2c2315f57d38372d0acf4c0"
-  integrity sha512-bik2YbIJwox5LctL3QwZ1pvG89ORR31do3mFHTF1l4zcvjqeLoqCHIImEsgl9uH7KYq27UxeG4y25Jo3PxA5qQ==
+  version "2.20.1"
+  resolved "https://registry.yarnpkg.com/@webrecorder/wabac/-/wabac-2.20.1.tgz#58e397e2ef1c33de1bb37aa4f51fc7f3eec8a1f7"
+  integrity sha512-RX+U6m7aVgvsAfLb9FuLY/PcHCNL5dc1FPaD0GnUiFgswSSe5v4MjIhqJNOnbrJYEcbib81AJfxNuvOyXAJDJQ==
   dependencies:
     "@peculiar/asn1-ecc" "^2.3.4"
     "@peculiar/asn1-schema" "^2.3.3"
     "@peculiar/x509" "^1.9.2"
     "@types/js-levenshtein" "^1.1.3"
-    "@webrecorder/wombat" "^3.8.6"
+    "@webrecorder/wombat" "^3.8.3"
     acorn "^8.10.0"
     auto-js-ipfs "^2.1.1"
     base64-js "^1.5.1"
@@ -1340,14 +1340,14 @@
     path-parser "^6.1.0"
     process "^0.11.10"
     stream-browserify "^3.0.0"
-    warcio "^2.4.0"
+    warcio "^2.3.1"
 
-"@webrecorder/wombat@^3.8.6":
-  version "3.8.6"
-  resolved "https://registry.yarnpkg.com/@webrecorder/wombat/-/wombat-3.8.6.tgz#3aa99d9519f6263434a9e0b963f6ef86d3e0494a"
-  integrity sha512-+IxV0bkoc6QdHYzwejsPFPC31dRjaxa6zGuR9F08aFb4Ooeekf9AK16ZIYweizs/wm7nvTG5E12ZwW0LUUzX8w==
+"@webrecorder/wombat@^3.8.3":
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/@webrecorder/wombat/-/wombat-3.8.3.tgz#c5a077225d1a70def9fbbbfcd50fa4465d236546"
+  integrity sha512-dqgoxigB3OdX5JeB3yxJrUNwFwUBlYC+LmGrLEgGeP259MFzXQLD2pmfuqGt5ygWvIv56SrAMV4sUceux07X2A==
   dependencies:
-    warcio "^2.4.0"
+    warcio "^2.3.1"
 
 "@zxing/text-encoding@0.9.0":
   version "0.9.0"
@@ -1695,10 +1695,10 @@ browserslist@^4.22.2:
     node-releases "^2.0.14"
     update-browserslist-db "^1.0.13"
 
-browsertrix-behaviors@^0.6.4:
-  version "0.6.4"
-  resolved "https://registry.yarnpkg.com/browsertrix-behaviors/-/browsertrix-behaviors-0.6.4.tgz#33fe9a433108f2faac3a03af91aff940433e5b87"
-  integrity sha512-xaiO/VqqeSd5FnAkIKQINxC/q3Med33Lqw3LGxD4NBtkcMSh1Anz/+830QHVlQbp08nIPUXYV96hDrx1Uv0PmQ==
+browsertrix-behaviors@^0.6.5:
+  version "0.6.5"
+  resolved "https://registry.yarnpkg.com/browsertrix-behaviors/-/browsertrix-behaviors-0.6.5.tgz#a8e3da231caff8e54e34cac6ed3ff431c68b664d"
+  integrity sha512-URUMUPdU0O2J8rmgzrzY4BzT8vv/iYNQUf/B1Eif3ntMsMC51R4/MGgOC8d7pUDCfy5tnOkV1FGlhB9A5LLQrw==
   dependencies:
     query-selector-shadow-dom "^1.0.1"
 
@@ -1963,6 +1963,11 @@ crypto-random-string@^4.0.0:
   dependencies:
     type-fest "^1.0.1"
 
+css-selector-parser@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/css-selector-parser/-/css-selector-parser-3.0.5.tgz#9b636ebccf7c4bcce5c1ac21ae27de9f01180ae9"
+  integrity sha512-3itoDFbKUNx1eKmVpYMFyqKX04Ww9osZ+dLgrk6GEv6KMVeXUhUnp4I5X+evw+u3ZxVU6RFXSSRxlTeMh8bA+g==
+
 data-uri-to-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-5.0.1.tgz#db89a9e279c2ffe74f50637a59a32fb23b3e4d7c"
@@ -1986,13 +1991,6 @@ debug@^4.1.0, debug@^4.1.1:
   version "4.3.1"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.1.tgz#f0d229c505e0c6d8c49ac553d1b13dc183f6b2ee"
   integrity sha512-doEwdvm4PCeK4K3RQN2ZC2BYUBaxwLARCqZmMjtF8a51J2Rb0xpVloFRnCODwqjpwnAoao4pelN8l3RJdv3gRQ==
-  dependencies:
-    ms "2.1.2"
-
-debug@^4.3.6:
-  version "4.3.6"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-4.3.6.tgz#2ab2c38fbaffebf8aa95fdfe6d88438c7a13c52b"
-  integrity sha512-O/09Bd4Z1fBrU4VzkhFqVgpPzaGbw6Sm9FEkBT1A/YBXQFGuuSxa1dN2nxgxS34JmKXqYx8CZAwEVoJFImUXIg==
   dependencies:
     ms "2.1.2"
 
@@ -4375,12 +4373,12 @@ punycode@^2.1.0:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
 
-puppeteer-core@^23.6.0:
-  version "23.6.0"
-  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-23.6.0.tgz#a3e1e09c05f47fb8ca2bc9d4ca200d18e3704303"
-  integrity sha512-se1bhgUpR9C529SgHGr/eyT92mYyQPAhA2S9pGtGrVG2xob9qE6Pbp7TlqiSPlnnY1lINqhn6/67EwkdzOmKqQ==
+puppeteer-core@^23.7.1:
+  version "23.7.1"
+  resolved "https://registry.yarnpkg.com/puppeteer-core/-/puppeteer-core-23.7.1.tgz#b1c313f1d3572ed772d82178b012f7c046cb53bb"
+  integrity sha512-Om/qCZhd+HLoAr7GltrRAZpS3uOXwHu7tXAoDbNcJADHjG2zeAlDArgyIPXYGG4QB/EQUHk13Q6RklNxGM73Pg==
   dependencies:
-    "@puppeteer/browsers" "2.4.0"
+    "@puppeteer/browsers" "2.4.1"
     chromium-bidi "0.8.0"
     debug "^4.3.7"
     devtools-protocol "0.0.1354347"
